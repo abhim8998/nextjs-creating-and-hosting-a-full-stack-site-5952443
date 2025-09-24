@@ -23,7 +23,7 @@ export default function ProductsList({ products, initialCartProducts = [] }: { p
   }
 
   async function removefromcart(productId: string) {
-    const response = await fetch('https://turbo-train-gxxqxxp4vj42w49-3000.app.github.dev/api/users/1/cart', {
+    const response = await fetch('/api/users/1/cart', {
       method: 'DELETE',
       body: JSON.stringify({
         productId,
