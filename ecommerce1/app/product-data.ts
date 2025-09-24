@@ -1,4 +1,5 @@
 export interface Product {
+  map(arg0: (products: any) => any): import("react").ReactNode;
   id: string;
   imageUrl: string;
   name: string;

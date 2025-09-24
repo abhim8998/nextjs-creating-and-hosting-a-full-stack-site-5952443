@@ -24,7 +24,7 @@ export async function GET(request: NextRequest, { params }: { params: Params }) 
     return new Response(JSON.stringify([]), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }
     });
   }

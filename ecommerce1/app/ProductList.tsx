@@ -9,7 +9,7 @@ export default function ProductsList({ products, initialCartProducts = [] }: { p
   const [cartProducts, setCartProducts] = useState(initialCartProducts)
   
   async function addToCart(productId: string) {
-    const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL + '/api/users/2/cart', {
+    const response = await fetch('/api/users/1/cart', {
       method: 'POST',
       body: JSON.stringify({
         productId,
@@ -22,8 +22,8 @@ export default function ProductsList({ products, initialCartProducts = [] }: { p
     setCartProducts(updatedCartProducts);
   }
 
-  async function removeFromCart(productId: string) {
-    const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL + '/api/users/2/cart', {
+  async function removefromcart(productId: string) {
+    const response = await fetch('https://turbo-train-gxxqxxp4vj42w49-3000.app.github.dev/api/users/1/cart', {
       method: 'DELETE',
       body: JSON.stringify({
         productId,
@@ -60,14 +60,14 @@ export default function ProductsList({ products, initialCartProducts = [] }: { p
           <p className="text-gray-600">${product.price}</p>
           {productIsInCart(product.id)
             ? (
-              <button
+              <button 
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
               onClick={(e) => {
                 e.preventDefault();
-                removeFromCart(product.id);
+                removefromcart(product.id)
               }}>Remove from Cart</button>
             ) : (
-              <button
+              <button 
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
               onClick={(e) => {
                 e.preventDefault();

@@ -1,10 +1,13 @@
 import NotFoundPage from "@/app/not-found";
 
-export const dynamic = 'force-dynamic';
-
 export default async function ProductDetailPage({ params }: { params: { id: string } }) {
-  const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL + '/api/products/' + params.id);
-  const product = await response.json();
+  const response = await fetch('/api/products'+ params.id);
+   if (!response.ok) {
+    // If the response is not OK (e.g., a 404 error), return the not-found page
+    return <NotFoundPage/>;
+  }
+  
+  const product = await response.json()
 
   if (!product) {
     return <NotFoundPage/>
